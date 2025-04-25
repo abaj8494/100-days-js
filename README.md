@@ -7,8 +7,9 @@ a shameful amount of my [website](https://abaj.ai) calls javascript code that I 
 # agenda
 
 - [X] character pyramid (js, Node)
+- [X] Rock-paper-scissors (javascript)
+- [ ] todo list (javascript)
 - [ ] shopping list (React)
-- [ ] Rock-paper-scissors (javascript)
 - [ ] Game Of Life (React)
 - [ ] Tic-Tac-Toe (React)
 - [ ] Ultimate Tic-Tac-Toe (React); minimax algorithm

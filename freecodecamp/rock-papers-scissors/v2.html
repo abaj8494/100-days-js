@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>🪨📄✂️</title>
+        <style>
+            body {
+                background-color: rgb(25, 25, 25);
+                color: white;
+                font-family: Arial;
+            }
+
+            .title {
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+            .move-icon {
+                height: 50px;
+            }
+
+            .move-button {
+                background-color: transparent;
+                cursor: pointer;
+                border: 3px solid white;
+                width: 120px;
+                height: 120px;
+                border-radius: 60px;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="title">Rock, Paper, Scissors ✂️</p>
+
+        <button class="move-button" onclick='verdict("Rock")'>
+            <img src="images/Rock-emoji.png" class="move-icon">
+        </button>
+
+        <button class="move-button"  onclick='verdict("Paper")'>
+            <img src="images/Paper-emoji.png" class="move-icon">
+        </button>
+
+        <button class="move-button"  onclick='verdict("Scissors")'>
+            <img src="images/Scissors-emoji.png" class="move-icon">
+        </button>
+
+        <p class="js-result"></p>
+        <p class="js-moves"></p>
+        <p class="js-score"></p>
+
+        <button onclick='
+            score.wins = 0;
+            score.ties = 0;
+            score.losses = 0;
+            localStorage.removeItem("score");
+            updateScoreElement();
+        '>Reset Score</button>
+        <button onclick='autoPlay()'>Auto Play 🔄</button>
+    </body>
+    <script src="logic.js">//hoisting will work</script>
+</html>

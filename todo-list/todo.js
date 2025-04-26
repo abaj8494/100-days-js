@@ -13,13 +13,12 @@ function renderTodoList() {
     for (let i = 0; i < todos.length; i++) {
         let todo = todos[i];
         const todoHTML = `
-        <p>
-            ${todo.name} ${todo.dueDate}
-            <button onclick="
-                todos.splice(${i}, 1);
-                renderTodoList();
-            ">Delete</button>
-        </p>
+        <div>${todo.name}</div>
+        <div>${todo.dueDate}</div>
+        <button class="delete-button" onclick="
+            todos.splice(${i}, 1);
+            renderTodoList();
+        ">Delete</button>
         `;
         todosHTML += todoHTML;
     }

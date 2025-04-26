@@ -14,7 +14,7 @@ function renderTodoList() {
         let todo = todos[i];
         const todoHTML = `
         <p>
-            ${todo}
+            ${todo.name} ${todo.dueDate}
             <button onclick="
                 todos.splice(${i}, 1);
                 renderTodoList();
@@ -30,8 +30,21 @@ function renderTodoList() {
 function addTodo() {
     const inputElement = document.querySelector('.js-name-input');
     const name = inputElement.value;
-    todos.push(name)
-    console.log(todos);
+
+    if (name === '') {
+        alert("You must enter a Todo!");
+        return;
+    }
+    const dueDate = document.querySelector('.js-date-input').value;
+    /*
+    I think these two are the same:
+        todoInstance = {'name' : name, 'dueDate': dueDate}; 
+        todoInstance = {name : name, dueDate: dueDate}; 
+    */
+    // furthermore, this is the shorthand property:
+    todoInstance = { name, dueDate }
+
+    todos.push(todoInstance)
 
     inputElement.value = ''; // resets text of textbox
     renderTodoList();

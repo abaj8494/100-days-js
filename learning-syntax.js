@@ -10,3 +10,12 @@ console.log(sum(1,2,3,4));
 // guard operator
 const message = 5 && 'hello';
 console.log(message)
+
+// destructuring
+let todo = {'name': 'Aayush Bajaj', 'dueDate': 'yesterday'}
+const { name, dueDate } = todo;
+/*
+equivalent to:
+    const name = todo.name;
+    const dueDate = todo.dueDate;
+*/

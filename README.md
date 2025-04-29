@@ -9,7 +9,11 @@ a shameful amount of my [website](https://abaj.ai) calls javascript code that I 
 - [X] character pyramid (js, Node)
 - [X] Rock-paper-scissors (javascript, css, html)
 - [X] todo list (javascript, css, html)
-- [ ] snakes (js, css, html)
+- [X] snakes (js, css, html)
+- [X] tic-tac-toe (javascript)
+- [ ] tetris
+- [ ] chess engine (alpha-beta, minimax)
+
 - [ ] shopping list (React)
 - [ ] Game Of Life (React)
 - [ ] Tic-Tac-Toe (React)

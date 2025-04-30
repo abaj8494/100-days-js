@@ -136,7 +136,6 @@ function playerSpace() {
 function playerDrop() {
     player.pos.y++;
     if (collide(arena, player)) {
-        console.log('smashed');
         player.pos.y--;
         merge(arena, player);
         playerReset();

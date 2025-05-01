@@ -1,4 +1,4 @@
-const pieces = {
+const PIECES = {
     EMPTY:  0,
     wP:     1, // white Pawn
     wN:     2, // white Knight
@@ -103,6 +103,13 @@ var PieceBishopQueen = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FAL
 var PieceSlides = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE ];
 
 
+const PieceKeys = new Array(14 * 120);
+let sideKey;
+const CastleKeys = new Array(16);
+
+const Sq120ToSq64 = new Array(BRD_SQ_NUM);
+const Sq64ToSq120 = new Array(64);
+
 function RAND_32() {
     return (
         (Math.floor(Math.random() * 256) << 24) |
@@ -110,4 +117,12 @@ function RAND_32() {
         (Math.floor(Math.random() * 256) << 8) |
         Math.floor(Math.random() * 256)
     ) >>> 0;
+}
+
+function SQ64(sq120) {
+    return Sq120ToSq64[(sq120)];
+}
+
+function SQ120(sq64) {
+    return Sq64ToSq120[(sq64)];
 }

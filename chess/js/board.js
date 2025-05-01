@@ -19,3 +19,27 @@ gameBoard.material = new Array(2);
 gameBoard.pceNum = new Array(13);
 gameBoard.pList = new Array(14 * 10);
 gameBoard.posKey = 0;
+
+
+function generatePosKey() {
+    let finalKey = 0;
+    let piece = PIECES.EMPTY;
+
+    for (let sq = 0; sq < BRD_SQ_NUM; ++sq) {
+        piece = gameBoard.pieces[sq];
+        if(piece != PIECES.EMPTY && piece != SQUARES.OFFBOARD) {
+            finalKey ^= PieceKeys[(piece * 120) + sq];
+        }
+    }
+
+    if (gameBoard.side === COLOURS.WHITE) {
+        finalKey ^= sideKey;
+    }
+
+    if (gameBoard.enPas != SQUARES.NO_SQ) {
+        finalKey ^= PieceKeys[gameBoard.enPas];
+    }
+
+    finalKey ^= CastleKeys[gameBoard.castlePerm];
+    return finalKey;
+}

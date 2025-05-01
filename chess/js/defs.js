@@ -29,14 +29,14 @@ const FILES = {
 }
 
 const RANKS = {
-    RANK_A:    0,
-    RANK_B:    1,
-    RANK_C:    2,
-    RANK_D:    3,
-    RANK_E:    4,
-    RANK_F:    5,
-    RANK_G:    6,
-    RANK_H:    7,
+    RANK_1:    0,
+    RANK_2:    1,
+    RANK_3:    2,
+    RANK_4:    3,
+    RANK_5:    4,
+    RANK_6:    5,
+    RANK_7:    6,
+    RANK_8:    7,
     RANK_NONE: 8
 }
 
@@ -46,7 +46,14 @@ const COLOURS = {
     BOTH:  2
 }
 
-const squares = {
+const CASTLEBIT = {
+    WKCA: 1,
+    WQCA: 2,
+    BKCA: 4,
+    BQCA: 8,
+}
+
+const SQUARES = {
     A1:       21,      
     B1:       22,
     C1:       23,
@@ -70,4 +77,37 @@ const squares = {
 const BOOL = {
     FALSE: 0,
     TRUE:  1
+}
+
+const FilesBrd = new Array(BRD_SQ_NUM);
+const RanksBrd = new Array(BRD_SQ_NUM);
+
+function FR2SQ(f, r) { // file rank to square
+    return ((21 + (f)) + ((r)*10));
+}
+
+
+// copy-pasted these defs :'(
+var PieceBig = [ BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE ];
+var PieceMaj = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE ];
+var PieceMin = [ BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE ];
+var PieceVal= [ 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  ];
+var PieceCol = [ COLOURS.BOTH, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE,
+	COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK ];
+	
+var PiecePawn = [ BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE ];	
+var PieceKnight = [ BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE ];
+var PieceKing = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE ];
+var PieceRookQueen = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE ];
+var PieceBishopQueen = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE ];
+var PieceSlides = [ BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE ];
+
+
+function RAND_32() {
+    return (
+        (Math.floor(Math.random() * 256) << 24) |
+        (Math.floor(Math.random() * 256) << 16) |
+        (Math.floor(Math.random() * 256) << 8) |
+        Math.floor(Math.random() * 256)
+    ) >>> 0;
 }

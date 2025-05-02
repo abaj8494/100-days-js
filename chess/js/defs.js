@@ -110,6 +110,10 @@ const CastleKeys = new Array(16);
 const Sq120ToSq64 = new Array(BRD_SQ_NUM);
 const Sq64ToSq120 = new Array(64);
 
+const MAXGAMEMOVES = 2048;
+const MAXPOSITIONMOVES = 256;
+const MAXDEPTH = 64;
+
 function RAND_32() {
     return (
         (Math.floor(Math.random() * 256) << 24) |
@@ -126,3 +130,5 @@ function SQ64(sq120) {
 function SQ120(sq64) {
     return Sq64ToSq120[(sq64)];
 }
+
+

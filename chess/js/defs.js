@@ -82,6 +82,12 @@ const BOOL = {
 const FilesBrd = new Array(BRD_SQ_NUM);
 const RanksBrd = new Array(BRD_SQ_NUM);
 
+const START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/RNBQKBNR/PPPPPPPP w KQkq - 0 1";
+const pceChar = ".PNBRQKpnbrqk";
+const sideChar = "wb-";
+const rankChar = "12345678";
+const fileChar = "abcdefgh";
+
 function FR2SQ(f, r) { // file rank to square
     return ((21 + (f)) + ((r)*10));
 }

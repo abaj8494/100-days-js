@@ -138,3 +138,6 @@ function SQ120(sq64) {
 }
 
 
+function PCEINDEX(pce, pceNum) {
+    return (pce * 10 + pceNum);
+}

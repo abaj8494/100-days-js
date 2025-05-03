@@ -83,14 +83,20 @@ function generatePosKey() {
 }
 
 
-function resetBoard() {
-    for (let i = 0; i < BRD_SQ_NUM; ++i) {
-        gameBoard.pieces[i] = SQUARES.OFFBOARD;
-    }
+function printPieceLists() {
+    let piece, pceNum;
 
-    for (let i = 0; i < 64; ++i) {
-        gameBoard.pieces[SQ120(i)] = PIECES.EMPTY;
+    for(piece = PIECES.wP; piece <= PIECES.bK; ++piece) {
+        for(pceNum = 0; pceNum < gameBoard.pceNum[piece]; ++pceNum) {
+            console.log('piece ' + pceChar[piece] + ' on ' + prSq(gameBoard.pList[PCEINDEX(piece,pceNum)]));
+
+        }
     }
+}
+
+function updateListsMaterial() {
+    let piece, sq, colour;
+
 
     for (let i = 0; i < 14 * 120; ++i) { // think the length might need to be 14 * 10.
         gameBoard.pList[i] = PIECES.EMPTY;
@@ -104,6 +110,28 @@ function resetBoard() {
         gameBoard.pceNum[i] = 0;
     }
 
+    for (let i = 0; i < 64; ++i) {
+        sq = SQ120(i);
+        piece = gameBoard.pieces[sq];
+        if (piece != PIECES.EMPTY) {
+            colour = PieceCol[piece];
+            gameBoard.material[colour] += PieceVal[piece];
+            gameBoard.pList[PCEINDEX(piece, gameBoard.pceNum[piece])] = sq;
+            gameBoard.pceNum[piece]++;
+        }
+        
+    }
+    printPieceLists();
+}
+
+function resetBoard() {
+    for (let i = 0; i < BRD_SQ_NUM; ++i) {
+        gameBoard.pieces[i] = SQUARES.OFFBOARD;
+    }
+
+    for (let i = 0; i < 64; ++i) {
+        gameBoard.pieces[SQ120(i)] = PIECES.EMPTY;
+    }
     gameBoard.side = COLOURS.BOTH;
     gameBoard.enPas = SQUARES.NO_SQ;
     gameBoard.fiftyMove = 0;
@@ -200,7 +228,9 @@ function parseFen(fen) {
 
     gameBoard.posKey = generatePosKey();
 
+    updateListsMaterial();
     
+
 
 
 }

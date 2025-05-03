@@ -228,9 +228,89 @@ function parseFen(fen) {
 
     gameBoard.posKey = generatePosKey();
 
+
     updateListsMaterial();
+    sqAttacked(21, 0);
+    printSqAttacked();
+}
+
+function printSqAttacked() {
+    let sq, file, rank, piece; 
+
+    console.log("\nAttacked: \n");
+
+    for (rank = RANKS.RANK_8; rank >= RANKS.RANK_1; rank--) {
+        let line = ((rank + 1) + " ");
+        for (file = FILES.FILE_A; file <= FILES.FILE_H; file++) {
+            sq = FR2SQ(file, rank);
+            piece = sqAttacked(sq, gameBoard.side) ? "X" : "-";
+            line += (" " + piece + " ");
+        }
+        console.log(line);
+    }
+    console.log("");
+}
+
+
+function sqAttacked(sq, side) {
+    let pce, t_sq;
+
+    // checks pawn attacks
+    if (side == COLOURS.WHITE) {
+        if (gameBoard.pieces[sq - 11] == PIECES.wP || gameBoard.pieces[sq - 9] == PIECES.wP ) {
+            return true;
+        }
+    } else {
+            if (gameBoard.pieces[sq + 11] == PIECES.bP || gameBoard.pieces[sq + 9] == PIECES.bP ) {
+                return true;
+            }
+    }
     
+    for (let i = 0; i < 8; i++) { // knight checks
+        pce = gameBoard.pieces[sq + KnDir[i]];
+        if (pce != SQUARES.OFFBOARD && PieceCol[pce] == side && PieceKnight[pce] == true) {
+            return true;
+        }
+    }
 
+    for (let i = 0; i < 4; ++i) { // rook checks
+        dir = RkDir[i];
+        t_sq = sq + dir;
+        pce = gameBoard.pieces[t_sq];
+        while(pce != SQUARES.OFFBOARD) {
+            if (pce != PIECES.EMPTY) {
+                if (PieceRookQueen[pce] == true && PieceCol[pce] == side) {
+                    return true;
+                }
+                break;
+            }
+            t_sq += dir;
+            pce = gameBoard.pieces[t_sq];
+        }
+    }
 
+    for (let i = 0; i < 4; ++i) { // bishop
+        dir = BiDir[i];
+        t_sq = sq + dir;
+        pce = gameBoard.pieces[t_sq];
+        while(pce != SQUARES.OFFBOARD) {
+            if (pce != PIECES.EMPTY) {
+                if (PieceBishopQueen[pce] == true && PieceCol[pce] == side) {
+                    return true;
+                }
+                break;
+            }
+            t_sq += dir;
+            pce = gameBoard.pieces[t_sq];
+        }
+    }
 
+    for (let i = 0; i < 8; i++) { // king
+        pce = gameBoard.pieces[sq + KiDir[i]];
+        if (pce != SQUARES.OFFBOARD && PieceCol[pce] == side && PieceKing[pce] == true) {
+            return true;
+        }
+    }
+
+    return false;
 }

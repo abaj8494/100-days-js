@@ -15,6 +15,7 @@ a shameful amount of my [website](https://abaj.ai) calls javascript code that I 
 - [ ] chess engine (alpha-beta, minimax)
 
 - [ ] n-queens
+- [X] knights tour
 
 
 - [ ] [sudoku](https://www.youtube.com/watch?v=S4uRtTb8U-U)
@@ -22,7 +23,6 @@ a shameful amount of my [website](https://abaj.ai) calls javascript code that I 
 
 - [ ] [brick breaker](https://www.youtube.com/watch?v=EmhkLLWAZ8E&list=PLnKe36F30Y4bLhA-st9sC4ZthyV7nsL2Q&index=12)
 - [ ] towers of hanoi
-- [ ] 
 
 - [ ] shopping list (React)
 - [ ] Game Of Life (React)

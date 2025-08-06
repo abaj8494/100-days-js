@@ -11,7 +11,7 @@ a shameful amount of my [website](https://abaj.ai) calls javascript code that I 
 - [X] todo list (javascript, css, html)
 - [X] snakes (js, css, html)
 - [X] tic-tac-toe (javascript)
-- [ ] [tetris](https://www.youtube.com/watch?v=H2aW5V46khA)
+- [X] [tetris](https://www.youtube.com/watch?v=H2aW5V46khA)
 - [ ] chess engine (alpha-beta, minimax)
 
 - [ ] n-queens
